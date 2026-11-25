@@ -1,24 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rock Paper Scissors</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Rock Paper Scissors Game</h1>
-  <p>Choose your move:</p>
-  <div class="buttons">
-    <button id="rock">✊</button>
-    <button id="paper">✋</button>
-    <button id="scissors">✌</button>
-  </div>
-  <p id="results">Lets Play!</p>
-  <p id="scores">
-    Your score: <span id="user-score">0</span>
-    Computer score: <span id="computer-score">0</span>
-  </p>
-  <script src="index.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Rock Paper Scissors Game</h1>
+    <p>Choose your move:</p>
+    <div class="buttons">
+      <button id="rock">✊</button>
+      <button id="paper">✋</button>
+      <button id="scissors">✌</button>
+    </div>
+    <p id="results">Lets Play!</p>
+
+    <button id="reset-btn">Reset Score</button>
+    <div id="scores">
+      <div>
+        <p>Your score: <span id="user-score">0</span></p>
+      </div>
+      <div>
+        <p>Computer score: <span id="computer-score">0</span></p>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
 </html>

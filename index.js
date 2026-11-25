@@ -2,23 +2,38 @@ const btns = document.querySelectorAll("button");
 const resultEl = document.querySelector("#results");
 const userScoreEl = document.querySelector("#user-score");
 const compScoreEl = document.querySelector("#computer-score");
+const resetBtn = document.querySelector("#reset-btn");
 
-let userScore = 0;
-let compScore = 0;
+let userScore = Number(localStorage.getItem("userScore")) || 0;
+let compScore = Number(localStorage.getItem("compScore")) || 0;
+
+userScoreEl.textContent = userScore;
+compScoreEl.textContent = compScore;
 
 btns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    console.log(`you clicked ${btn.id}`);
+    // This stops Reset button from also playing a round
+    if (btn.id === "reset-btn") return;
 
     const result = playRound(btn.id, compMove());
-    console.log(result);
     resultEl.textContent = result;
     userScoreEl.textContent = userScore;
     compScoreEl.textContent = compScore;
+
+    localStorage.setItem("userScore", userScore);
+    localStorage.setItem("compScore", compScore);
   });
 });
 
-// functions
+resetBtn.addEventListener("click", () => {
+  userScore = 0;
+  compScore = 0;
+  userScoreEl.textContent = userScore;
+  compScoreEl.textContent = compScore;
+  resultEl.textContent = "Score reset! Play again.";
+  localStorage.removeItem("userScore");
+  localStorage.removeItem("compScore");
+});
 
 function compMove() {
   const choices = ["rock", "paper", "scissors"];
@@ -35,7 +50,6 @@ function playRound(userMove, compMove) {
     (userMove === "scissors" && compMove === "paper")
   ) {
     userScore++;
-
     return `You win! ${userMove} beats ${compMove}`;
   } else {
     compScore++;
